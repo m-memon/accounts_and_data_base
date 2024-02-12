@@ -23,30 +23,39 @@ void main() {
     adminsFile.createSync(recursive: true);
   } else {}
 
-  // Read Main Admin DataBase
-  Map mainAdmin = jsonDecode(mainAdminsFile.readAsStringSync());
+  runApp(
+    const MyApp(),
+  );
+}
 
-  // Decide Whether Or Not To Create A New Admin Or Main Admin
-  if (mainAdmin["Name"] == "") {
-    runApp(
-      MaterialApp(
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // initialize Admin DataBase Variable
+    File mainAdminsFile = File("database/admins/main_admin.json");
+    File adminsFile = File("database/admins/user_admin.json");
+
+    // Read Main Admin DataBase
+    Map mainAdmin = jsonDecode(mainAdminsFile.readAsStringSync());
+
+    // Decide Whether Or Not To Create A New Admin Or Main Admin
+    if (mainAdmin["Name"] == "") {
+      return const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: CreateMainAdminScreen(),
-      ),
-    );
-  } else if (adminsFile.readAsStringSync() == "") {
-    runApp(
-      MaterialApp(
+      );
+    } else if (adminsFile.readAsStringSync() == "") {
+      return const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: CreateAdminScreen(),
-      ),
-    );
-  } else {
-    runApp(
-      MaterialApp(
+      );
+    } else {
+      return const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: LogInScreen(),
-      ),
-    );
+      );
+    }
   }
 }
