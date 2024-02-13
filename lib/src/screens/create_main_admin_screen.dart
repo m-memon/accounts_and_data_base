@@ -87,51 +87,55 @@ class _CreateMainAdminScreenState extends State<CreateMainAdminScreen> {
     myFunction(); // Call myFunction() here to ensure it is executed on each rebuild
     double scnW = MediaQuery.of(context).size.width;
     double scnH = MediaQuery.of(context).size.height;
-    return Scaffold(
-      body: scnH > scnW
-          ? PortraitCreateMainAdminScreen(
-              emailFocusNode: emailFocusNode,
-              emailController: _emailController,
-              pswdFocusNode: pswdFocusNode,
-              pswdController: _pswdController,
-              emailBool: emailBool,
-              pswdBool: pswdBool,
-              pswdVisible: pswdVisible,
-              onUpdatePswdVisible: updatePswdVisible,
-              passwordStrengthIndicator: passwordStrengthIndicator,
-              loginOnPressed: onloginOnPressed,
-              loginWithFacebookOnPressed: onLoginWithFacebookOnPressed,
-              dontHaveAnAccountOnPressed: onDontHaveAnAccountOnPressed,
-            )
-          : scnH < scnW
-              ? LandscapeCreateMainAdminScreen(
-                  emailFocusNode: emailFocusNode,
-                  emailController: _emailController,
-                  pswdFocusNode: pswdFocusNode,
-                  pswdController: _pswdController,
-                  emailBool: emailBool,
-                  pswdBool: pswdBool,
-                  pswdVisible: pswdVisible,
-                  onUpdatePswdVisible: updatePswdVisible,
-                  passwordStrengthIndicator: passwordStrengthIndicator,
-                  loginOnPressed: onloginOnPressed,
-                  loginWithFacebookOnPressed: onLoginWithFacebookOnPressed,
-                  dontHaveAnAccountOnPressed: onDontHaveAnAccountOnPressed,
-                )
-              : SquareCreateMainAdminScreen(
-                  emailFocusNode: emailFocusNode,
-                  emailController: _emailController,
-                  pswdFocusNode: pswdFocusNode,
-                  pswdController: _pswdController,
-                  emailBool: emailBool,
-                  pswdBool: pswdBool,
-                  pswdVisible: pswdVisible,
-                  onUpdatePswdVisible: updatePswdVisible,
-                  passwordStrengthIndicator: passwordStrengthIndicator,
-                  loginOnPressed: onloginOnPressed,
-                  loginWithFacebookOnPressed: onLoginWithFacebookOnPressed,
-                  dontHaveAnAccountOnPressed: onDontHaveAnAccountOnPressed,
-                ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Very First Screen",
+      home: Scaffold(
+        body: scnH > scnW
+            ? PortraitCreateMainAdminScreen(
+                emailFocusNode: emailFocusNode,
+                emailController: _emailController,
+                pswdFocusNode: pswdFocusNode,
+                pswdController: _pswdController,
+                emailBool: emailBool,
+                pswdBool: pswdBool,
+                pswdVisible: pswdVisible,
+                onUpdatePswdVisible: updatePswdVisible,
+                passwordStrengthIndicator: passwordStrengthIndicator,
+                loginOnPressed: onloginOnPressed,
+                loginWithFacebookOnPressed: onLoginWithFacebookOnPressed,
+                dontHaveAnAccountOnPressed: onDontHaveAnAccountOnPressed,
+              )
+            : scnH < scnW
+                ? LandscapeCreateMainAdminScreen(
+                    emailFocusNode: emailFocusNode,
+                    emailController: _emailController,
+                    pswdFocusNode: pswdFocusNode,
+                    pswdController: _pswdController,
+                    emailBool: emailBool,
+                    pswdBool: pswdBool,
+                    pswdVisible: pswdVisible,
+                    onUpdatePswdVisible: updatePswdVisible,
+                    passwordStrengthIndicator: passwordStrengthIndicator,
+                    loginOnPressed: onloginOnPressed,
+                    loginWithFacebookOnPressed: onLoginWithFacebookOnPressed,
+                    dontHaveAnAccountOnPressed: onDontHaveAnAccountOnPressed,
+                  )
+                : SquareCreateMainAdminScreen(
+                    emailFocusNode: emailFocusNode,
+                    emailController: _emailController,
+                    pswdFocusNode: pswdFocusNode,
+                    pswdController: _pswdController,
+                    emailBool: emailBool,
+                    pswdBool: pswdBool,
+                    pswdVisible: pswdVisible,
+                    onUpdatePswdVisible: updatePswdVisible,
+                    passwordStrengthIndicator: passwordStrengthIndicator,
+                    loginOnPressed: onloginOnPressed,
+                    loginWithFacebookOnPressed: onLoginWithFacebookOnPressed,
+                    dontHaveAnAccountOnPressed: onDontHaveAnAccountOnPressed,
+                  ),
+      ),
     );
   }
 }

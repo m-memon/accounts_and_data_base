@@ -15,12 +15,19 @@ class _FirstCreateAdminScreenState extends State<FirstCreateAdminScreen> {
   Widget build(BuildContext context) {
     double scnW = MediaQuery.of(context).size.width;
     double scnH = MediaQuery.of(context).size.height;
-    return Scaffold(
-      body: scnH > scnW
-          ? PortraitFirstCreateAdminScreen()
-          : scnH < scnW
-              ? LandscapeFirstCreateAdminScreen()
-              : SquareFirstCreateAdminScreen(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Very Second Screen",
+      home: Scaffold(
+        body: Container(
+          color: Colors.blueAccent,
+        ),
+        // body: scnH > scnW
+        //     ? PortraitFirstCreateAdminScreen()
+        //     : scnH < scnW
+        //         ? LandscapeFirstCreateAdminScreen()
+        //         : SquareFirstCreateAdminScreen(),
+      ),
     );
   }
 }

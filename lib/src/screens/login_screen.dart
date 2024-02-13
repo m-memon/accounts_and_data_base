@@ -15,12 +15,19 @@ class _LogInScreenState extends State<LogInScreen> {
   Widget build(BuildContext context) {
     double scnW = MediaQuery.of(context).size.width;
     double scnH = MediaQuery.of(context).size.height;
-    return Scaffold(
-      body: scnH > scnW
-          ? PortraitLogInScreen()
-          : scnH < scnW
-              ? LandscapeLogInScreen()
-              : SquareLogInScreen(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Login Screen",
+      home: Scaffold(
+        body: Container(
+          color: Colors.amberAccent,
+        ),
+        // body: scnH > scnW
+        //     ? PortraitLogInScreen()
+        //     : scnH < scnW
+        //         ? LandscapeLogInScreen()
+        //         : SquareLogInScreen(),
+      ),
     );
   }
 }
