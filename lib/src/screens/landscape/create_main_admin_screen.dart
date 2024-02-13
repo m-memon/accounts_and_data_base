@@ -2,38 +2,36 @@ import "package:flutter/material.dart";
 import "/src/module/password.dart";
 
 class LandscapeCreateMainAdminScreen extends StatefulWidget {
-  final FocusNode emailFocusNode;
-  final TextEditingController emailController;
-  final bool emailBool;
+  final FocusNode userNameFocusNode;
+  final TextEditingController userNameController;
+  final bool userNameBool;
   final FocusNode pswdFocusNode;
   final TextEditingController pswdController;
   final bool pswdBool;
   final bool pswdVisible;
   final Function(bool) onUpdatePswdVisible;
   final DecidePasswordStrength passwordStrengthIndicator;
-  final Function() loginOnPressed;
-  final Function() loginWithFacebookOnPressed;
-  final Function() dontHaveAnAccountOnPressed;
+  final Function() createAccountOnPressed;
   const LandscapeCreateMainAdminScreen({
     Key? key,
-    required this.emailFocusNode,
-    required this.emailController,
+    required this.userNameFocusNode,
+    required this.userNameController,
     required this.pswdFocusNode,
     required this.pswdController,
-    required this.emailBool,
+    required this.userNameBool,
     required this.pswdBool,
     required this.pswdVisible,
     required this.onUpdatePswdVisible,
     required this.passwordStrengthIndicator,
-    required this.loginOnPressed,
-    required this.loginWithFacebookOnPressed,
-    required this.dontHaveAnAccountOnPressed,
+    required this.createAccountOnPressed,
   }) : super(key: key);
   @override
-  State<LandscapeCreateMainAdminScreen> createState() => _LandscapeCreateMainAdminScreenState();
+  State<LandscapeCreateMainAdminScreen> createState() =>
+      _LandscapeCreateMainAdminScreenState();
 }
 
-class _LandscapeCreateMainAdminScreenState extends State<LandscapeCreateMainAdminScreen> {
+class _LandscapeCreateMainAdminScreenState
+    extends State<LandscapeCreateMainAdminScreen> {
   @override
   void initState() {
     super.initState();
@@ -51,25 +49,16 @@ class _LandscapeCreateMainAdminScreenState extends State<LandscapeCreateMainAdmi
     return Container(
       width: scnW * 1000,
       height: scnH * 1000,
-      color: Colors.transparent,
+      color: Colors.black38,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "DEMO",
+            "AccuManage",
             style: TextStyle(
               color: Colors.blue,
-              fontSize: scnH * 120,
-              fontWeight: FontWeight.bold,
-              inherit: true,
-            ),
-          ),
-          Text(
-            "Landscape Login Screen",
-            style: TextStyle(
-              color: Colors.blue,
-              fontSize: scnH * 35,
+              fontSize: scnH * 90,
               fontWeight: FontWeight.bold,
               inherit: true,
             ),
@@ -79,7 +68,7 @@ class _LandscapeCreateMainAdminScreenState extends State<LandscapeCreateMainAdmi
           ),
           Container(
             width: scnW * 600,
-            height: scnW * 135,
+            height: scnW * 100,
             color: Colors.transparent,
             child: Stack(
               alignment: Alignment.topCenter,
@@ -87,17 +76,17 @@ class _LandscapeCreateMainAdminScreenState extends State<LandscapeCreateMainAdmi
                 AnimatedPositioned(
                   duration: const Duration(microseconds: 200),
                   curve: Curves.ease,
-                  top: widget.emailBool ? scnH * 0 : scnH * 5,
+                  top: widget.userNameBool ? scnH * 0 : scnH * 5,
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
                     curve: Curves.ease,
-                    width: widget.emailBool ? scnW * 600 : scnW * 300,
-                    height: widget.emailBool ? scnH * 45 : scnH * 40,
+                    width: widget.userNameBool ? scnW * 600 : scnW * 300,
+                    height: widget.userNameBool ? scnH * 45 : scnH * 40,
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius:
-                            BorderRadius.circular(widget.emailBool ? 30 : 5),
+                            BorderRadius.circular(widget.userNameBool ? 30 : 5),
                         border: Border.all(
                           color: Colors.transparent,
                         ),
@@ -105,20 +94,20 @@ class _LandscapeCreateMainAdminScreenState extends State<LandscapeCreateMainAdmi
                       child: Row(
                         children: [
                           Container(
-                            width: widget.emailBool ? scnW * 60 : scnW * 35,
+                            width: widget.userNameBool ? scnW * 60 : scnW * 35,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
-                                topLeft:
-                                    Radius.circular(widget.emailBool ? 30 : 5),
-                                bottomLeft:
-                                    Radius.circular(widget.emailBool ? 30 : 5),
+                                topLeft: Radius.circular(
+                                    widget.userNameBool ? 30 : 5),
+                                bottomLeft: Radius.circular(
+                                    widget.userNameBool ? 30 : 5),
                                 topRight: Radius.zero,
                                 bottomRight: Radius.zero,
                               ),
                             ),
                             child: Icon(
                               Icons.person,
-                              color: widget.emailBool
+                              color: widget.userNameBool
                                   ? Colors.deepPurple.shade400
                                   : Colors.deepPurple.shade200,
                               size: scnH * 30,
@@ -126,11 +115,11 @@ class _LandscapeCreateMainAdminScreenState extends State<LandscapeCreateMainAdmi
                           ),
                           Expanded(
                             child: TextFormField(
-                              controller: widget.emailController,
-                              focusNode: widget.emailFocusNode,
+                              controller: widget.userNameController,
+                              focusNode: widget.userNameFocusNode,
                               textAlignVertical: TextAlignVertical.bottom,
                               decoration: InputDecoration(
-                                hintText: "Email",
+                                hintText: "Username",
                                 border: OutlineInputBorder(
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.zero,
@@ -160,7 +149,7 @@ class _LandscapeCreateMainAdminScreenState extends State<LandscapeCreateMainAdmi
                               ),
                               style: TextStyle(
                                 fontSize:
-                                    widget.emailBool ? scnH * 20 : scnH * 18,
+                                    widget.userNameBool ? scnH * 20 : scnH * 18,
                               ),
                             ),
                           ),
@@ -313,126 +302,69 @@ class _LandscapeCreateMainAdminScreenState extends State<LandscapeCreateMainAdmi
             ),
           ),
           SizedBox(
-            width: scnW * 300,
-            height: scnH * 40,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  width: scnW * 145,
-                  height: scnH * 40,
-                  child: MaterialButton(
-                    animationDuration: const Duration(milliseconds: 250),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    color: Colors.blue,
-                    elevation: 10,
-                    onPressed: () => widget.loginOnPressed(),
-                    child: Stack(
-                      alignment: Alignment.centerLeft,
-                      children: <Widget>[
-                        Positioned(
-                          left: scnW * 37.5,
-                          child: Text(
-                            "LOGIN",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: scnH * 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          right: scnW * -0,
-                          child: Container(
-                            width: scnW * 27.5,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Icon(
-                              Icons.arrow_forward,
-                              color: Colors.blue,
-                              size: scnH * 27.5,
-                            ),
-                          ),
-                        )
-                      ],
+            width: scnW * 250,
+            height: scnH * 80,
+            child: MaterialButton(
+              animationDuration: const Duration(milliseconds: 250),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              color: Colors.blue,
+              elevation: 10,
+              onPressed: () => widget.createAccountOnPressed(),
+              child: Stack(
+                alignment: Alignment.centerLeft,
+                children: <Widget>[
+                  Positioned(
+                    left: scnW * 20,
+                    child: Text(
+                      "CREATE ACCOUNT",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: scnH * 30,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: scnW * 145,
-                  height: scnH * 40,
-                  child: MaterialButton(
-                    animationDuration: const Duration(milliseconds: 250),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                  Positioned(
+                    right: scnW * -0,
+                    child: Container(
+                      width: scnW * 55,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Icon(
+                        Icons.arrow_forward,
+                        color: Colors.blue,
+                        size: scnH * 55,
+                      ),
                     ),
-                    color: Colors.blue[900],
-                    elevation: 10,
-                    onPressed: () => widget.loginWithFacebookOnPressed(),
-                    child: Stack(
-                      alignment: Alignment.centerLeft,
-                      children: <Widget>[
-                        Positioned(
-                          left: scnW * 17.5,
-                          child: Text(
-                            "LOGIN WITH FACEBOOK",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: scnH * 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          right: scnW * -0,
-                          child: Container(
-                            width: scnW * 27.5,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Icon(
-                              Icons.facebook_outlined,
-                              color: Colors.blue[900],
-                              size: scnH * 27.5,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: scnH * 20,
-          ),
-          TextButton(
-            onPressed: () => widget.dontHaveAnAccountOnPressed(),
-            child: Text(
-              "Don't Have An Account?",
-              style: TextStyle(
-                fontSize: scnH * 17,
+                  )
+                ],
               ),
             ),
-          )
+          ),
+          Text(
+            "Create main admin account",
+            style: TextStyle(
+              color: Colors.blue,
+              fontSize: scnH * 30,
+              fontWeight: FontWeight.bold,
+              inherit: true,
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-//  This Flutter code defines a stateful widget named `LandscapeLogInScreen`
-//  representing the login screen for a multi-platform application in landscape
-//  orientation. It includes various UI elements such as text fields for email
-//  and password, password strength indicators, buttons for login and login with
-//  Facebook, and a link for users who don't have an account. The widget adjusts
-//  its appearance based on the state of the email and password input fields.
-//  AnimatedPositioned and AnimatedContainer are used for smooth animations when
-//  elements change visibility or size. The widget also interacts with a
-//  `DecidePasswordStrength` class to provide feedback on password strength.
+// This Flutter Dart code defines a LandscapeCreateMainAdminScreen widget,
+// which is a stateful widget representing a user interface for creating
+// a main admin account. The screen layout is optimized for landscape
+// orientation. It consists of input fields for username and password,
+// with dynamic visibility toggling for the password field. Additionally,
+// it displays a password strength indicator. The widget includes a button
+// for creating the account. The layout adjusts based on the device's screen
+// dimensions

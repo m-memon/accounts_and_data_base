@@ -2,38 +2,36 @@ import "package:flutter/material.dart";
 import "/src/module/password.dart";
 
 class PortraitCreateMainAdminScreen extends StatefulWidget {
-  final FocusNode emailFocusNode;
-  final bool emailBool;
-  final TextEditingController emailController;
+  final FocusNode userNameFocusNode;
+  final TextEditingController userNameController;
+  final bool userNameBool;
   final FocusNode pswdFocusNode;
   final TextEditingController pswdController;
   final bool pswdBool;
   final bool pswdVisible;
   final Function(bool) onUpdatePswdVisible;
   final DecidePasswordStrength passwordStrengthIndicator;
-  final Function() loginOnPressed;
-  final Function() loginWithFacebookOnPressed;
-  final Function() dontHaveAnAccountOnPressed;
+  final Function() createAccountOnPressed;
   const PortraitCreateMainAdminScreen({
     Key? key,
-    required this.emailFocusNode,
-    required this.emailController,
+    required this.userNameFocusNode,
+    required this.userNameController,
     required this.pswdFocusNode,
     required this.pswdController,
-    required this.emailBool,
+    required this.userNameBool,
     required this.pswdBool,
     required this.pswdVisible,
     required this.onUpdatePswdVisible,
     required this.passwordStrengthIndicator,
-    required this.loginOnPressed,
-    required this.loginWithFacebookOnPressed,
-    required this.dontHaveAnAccountOnPressed,
+    required this.createAccountOnPressed,
   }) : super(key: key);
   @override
-  State<PortraitCreateMainAdminScreen> createState() => _PortraitCreateMainAdminScreenState();
+  State<PortraitCreateMainAdminScreen> createState() =>
+      _PortraitCreateMainAdminScreenState();
 }
 
-class _PortraitCreateMainAdminScreenState extends State<PortraitCreateMainAdminScreen> {
+class _PortraitCreateMainAdminScreenState
+    extends State<PortraitCreateMainAdminScreen> {
   @override
   void initState() {
     super.initState();
@@ -51,29 +49,21 @@ class _PortraitCreateMainAdminScreenState extends State<PortraitCreateMainAdminS
     return Container(
       width: scnW * 1000,
       height: scnH * 1000,
-      color: Colors.transparent,
+      color: Colors.black38,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "DEMO",
+            "AccuManage",
             style: TextStyle(
               color: Colors.blue,
               fontSize: scnH * 70,
               fontWeight: FontWeight.bold,
             ),
           ),
-          Text(
-            "Patriot Login Screen",
-            style: TextStyle(
-              color: Colors.blue,
-              fontSize: scnH * 25,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
           SizedBox(
-            height: scnH * 50,
+            height: scnH * 25,
           ),
           Container(
             width: scnW * 950,
@@ -85,17 +75,17 @@ class _PortraitCreateMainAdminScreenState extends State<PortraitCreateMainAdminS
                 AnimatedPositioned(
                   duration: const Duration(microseconds: 200),
                   curve: Curves.ease,
-                  top: widget.emailBool ? scnH * 0 : scnH * 5,
+                  top: widget.userNameBool ? scnH * 0 : scnH * 5,
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
                     curve: Curves.ease,
-                    width: widget.emailBool ? scnW * 950 : scnW * 600,
-                    height: widget.emailBool ? scnH * 45 : scnH * 40,
+                    width: widget.userNameBool ? scnW * 950 : scnW * 600,
+                    height: widget.userNameBool ? scnH * 45 : scnH * 40,
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius:
-                            BorderRadius.circular(widget.emailBool ? 30 : 5),
+                            BorderRadius.circular(widget.userNameBool ? 30 : 5),
                         border: Border.all(
                           color: Colors.transparent,
                         ),
@@ -103,20 +93,20 @@ class _PortraitCreateMainAdminScreenState extends State<PortraitCreateMainAdminS
                       child: Row(
                         children: [
                           Container(
-                            width: widget.emailBool ? scnW * 100 : scnW * 70,
+                            width: widget.userNameBool ? scnW * 100 : scnW * 70,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
-                                topLeft:
-                                    Radius.circular(widget.emailBool ? 30 : 5),
-                                bottomLeft:
-                                    Radius.circular(widget.emailBool ? 30 : 5),
+                                topLeft: Radius.circular(
+                                    widget.userNameBool ? 30 : 5),
+                                bottomLeft: Radius.circular(
+                                    widget.userNameBool ? 30 : 5),
                                 topRight: Radius.zero,
                                 bottomRight: Radius.zero,
                               ),
                             ),
                             child: Icon(
                               Icons.person,
-                              color: widget.emailBool
+                              color: widget.userNameBool
                                   ? Colors.deepPurple.shade400
                                   : Colors.deepPurple.shade200,
                               size: scnH * 30,
@@ -124,11 +114,11 @@ class _PortraitCreateMainAdminScreenState extends State<PortraitCreateMainAdminS
                           ),
                           Expanded(
                             child: TextFormField(
-                              controller: widget.emailController,
-                              focusNode: widget.emailFocusNode,
+                              controller: widget.userNameController,
+                              focusNode: widget.userNameFocusNode,
                               textAlignVertical: TextAlignVertical.bottom,
                               decoration: InputDecoration(
-                                hintText: "Email",
+                                hintText: "Username",
                                 border: OutlineInputBorder(
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.zero,
@@ -158,7 +148,7 @@ class _PortraitCreateMainAdminScreenState extends State<PortraitCreateMainAdminS
                               ),
                               style: TextStyle(
                                 fontSize:
-                                    widget.emailBool ? scnH * 20 : scnH * 18,
+                                    widget.userNameBool ? scnH * 20 : scnH * 18,
                               ),
                             ),
                           ),
@@ -315,7 +305,7 @@ class _PortraitCreateMainAdminScreenState extends State<PortraitCreateMainAdminS
           ),
           SizedBox(
             width: scnW * 600,
-            height: scnH * 40,
+            height: scnH * 55,
             child: MaterialButton(
               animationDuration: const Duration(milliseconds: 250),
               shape: RoundedRectangleBorder(
@@ -323,17 +313,17 @@ class _PortraitCreateMainAdminScreenState extends State<PortraitCreateMainAdminS
               ),
               color: Colors.blue,
               elevation: 10,
-              onPressed: () => widget.loginOnPressed(),
+              onPressed: () => widget.createAccountOnPressed(),
               child: Stack(
                 alignment: Alignment.centerLeft,
                 children: <Widget>[
                   Positioned(
                     left: scnW * 40,
                     child: Text(
-                      "LOGIN",
+                      "CREATE ACCOUNT",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: scnH * 14,
+                        fontSize: scnH * 25,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -341,7 +331,7 @@ class _PortraitCreateMainAdminScreenState extends State<PortraitCreateMainAdminS
                   Positioned(
                     right: scnW * -0,
                     child: Container(
-                      width: scnW * 100,
+                      width: scnW * 150,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(30),
@@ -349,7 +339,7 @@ class _PortraitCreateMainAdminScreenState extends State<PortraitCreateMainAdminS
                       child: Icon(
                         Icons.arrow_forward,
                         color: Colors.blue,
-                        size: scnH * 30,
+                        size: scnH * 33,
                       ),
                     ),
                   )
@@ -358,76 +348,28 @@ class _PortraitCreateMainAdminScreenState extends State<PortraitCreateMainAdminS
             ),
           ),
           SizedBox(
-            height: scnH * 5,
+            height: scnH * 10,
           ),
-          SizedBox(
-            width: scnW * 600,
-            height: scnH * 40,
-            child: MaterialButton(
-              animationDuration: const Duration(milliseconds: 250),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              color: Colors.blue[900],
-              elevation: 10,
-              onPressed: () => widget.loginWithFacebookOnPressed(),
-              child: Stack(
-                alignment: Alignment.centerLeft,
-                children: <Widget>[
-                  Positioned(
-                    left: scnW * 40,
-                    child: Text(
-                      "LOGIN WITH FACEBOOK",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: scnH * 14,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    right: scnW * -0,
-                    child: Container(
-                      width: scnW * 100,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Icon(
-                        Icons.facebook_outlined,
-                        color: Colors.blue[900],
-                        size: scnH * 30,
-                      ),
-                    ),
-                  )
-                ],
-              ),
+          Text(
+            "Create main admin account",
+            style: TextStyle(
+              color: Colors.blue,
+              fontSize: scnH * 25,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(
-            height: scnH * 20,
-          ),
-          TextButton(
-            onPressed: () => widget.dontHaveAnAccountOnPressed(),
-            child: Text(
-              "Don't Have An Account?",
-              style: TextStyle(
-                fontSize: scnH * 17,
-              ),
-            ),
-          )
         ],
       ),
     );
   }
 }
 
-//  This Flutter code defines a stateful widget named `PortraitLogInScreen`
-//  representing the login screen for a multi-platform application in portrait
-//  orientation. It includes various UI elements such as text fields for email
-//  and password, password strength indicators, buttons for login and login with
-//  Facebook, and a link for users who don't have an account. The widget adjusts
-//  its appearance based on the state of the email and password input fields.
-//  AnimatedPositioned and AnimatedContainer are used for smooth animations when
-//  elements change visibility or size. The widget also interacts with a
-//  `DecidePasswordStrength` class to provide feedback on password strength.
+// This Flutter Dart code defines a stateful widget called
+// PortraitCreateMainAdminScreen that represents a user interface for
+// creating a main admin account in portrait orientation. It includes
+// input fields for username and password with dynamic visibility toggling
+// for the password field. The widget adjusts its layout based on screen
+// dimensions. It also provides feedback on password strength and allows
+// the user to create an account with a "CREATE ACCOUNT" button. The UI is
+// structured using containers, text fields, buttons, and icons, all animated
+// with smooth transitions.

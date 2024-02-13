@@ -12,37 +12,37 @@ class CreateMainAdminScreen extends StatefulWidget {
 }
 
 class _CreateMainAdminScreenState extends State<CreateMainAdminScreen> {
-  late final FocusNode emailFocusNode;
-  late final TextEditingController _emailController;
-  late final FocusNode pswdFocusNode;
+  late final FocusNode _userNameFocusNode;
+  late final TextEditingController _userNameController;
+  late final FocusNode _pswdFocusNode;
   late final TextEditingController _pswdController;
-  late bool emailBool;
-  late bool pswdBool;
-  late bool pswdVisible;
-  late DecidePasswordStrength passwordStrengthIndicator;
+  late bool _userNameBool;
+  late bool _pswdBool;
+  late bool _pswdVisible;
+  late DecidePasswordStrength _passwordStrengthIndicator;
 
   myFunction() {
-    emailFocusNode.addListener(() {
+    _userNameFocusNode.addListener(() {
       setState(() {
-        if (emailFocusNode.hasFocus) {
-          emailBool = true;
-        } else if (!emailFocusNode.hasFocus) {
-          emailBool = false;
+        if (_userNameFocusNode.hasFocus) {
+          _userNameBool = true;
+        } else if (!_userNameFocusNode.hasFocus) {
+          _userNameBool = false;
         }
       });
     });
-    pswdFocusNode.addListener(() {
+    _pswdFocusNode.addListener(() {
       setState(() {
-        if (pswdFocusNode.hasFocus) {
-          pswdBool = true;
-        } else if (!pswdFocusNode.hasFocus) {
-          pswdBool = false;
+        if (_pswdFocusNode.hasFocus) {
+          _pswdBool = true;
+        } else if (!_pswdFocusNode.hasFocus) {
+          _pswdBool = false;
         }
       });
     });
     _pswdController.addListener(() {
       setState(() {
-        passwordStrengthIndicator.detectPasswordStrength(_pswdController.text);
+        _passwordStrengthIndicator.detectPasswordStrength(_pswdController.text);
       });
     });
   }
@@ -50,35 +50,31 @@ class _CreateMainAdminScreenState extends State<CreateMainAdminScreen> {
   // Method to update pswdVisible from child
   void updatePswdVisible(bool newValue) {
     setState(() {
-      pswdVisible = newValue;
+      _pswdVisible = newValue;
     });
   }
 
-  void onloginOnPressed() {}
-
-  void onLoginWithFacebookOnPressed() {}
-
-  void onDontHaveAnAccountOnPressed() {}
+  void createAccountOnPressed() {}
 
   @override
   void initState() {
     super.initState();
-    emailFocusNode = FocusNode();
-    _emailController = TextEditingController();
-    pswdFocusNode = FocusNode();
+    _userNameFocusNode = FocusNode();
+    _userNameController = TextEditingController();
+    _pswdFocusNode = FocusNode();
     _pswdController = TextEditingController();
-    emailBool = false;
-    pswdBool = false;
-    pswdVisible = true;
-    passwordStrengthIndicator = DecidePasswordStrength();
+    _userNameBool = false;
+    _pswdBool = false;
+    _pswdVisible = true;
+    _passwordStrengthIndicator = DecidePasswordStrength();
   }
 
   @override
   void dispose() {
     super.dispose();
-    emailFocusNode.dispose();
-    _emailController.dispose();
-    pswdFocusNode.dispose();
+    _userNameFocusNode.dispose();
+    _userNameController.dispose();
+    _pswdFocusNode.dispose();
     _pswdController.dispose();
   }
 
@@ -93,59 +89,54 @@ class _CreateMainAdminScreenState extends State<CreateMainAdminScreen> {
       home: Scaffold(
         body: scnH > scnW
             ? PortraitCreateMainAdminScreen(
-                emailFocusNode: emailFocusNode,
-                emailController: _emailController,
-                pswdFocusNode: pswdFocusNode,
+                userNameFocusNode: _userNameFocusNode,
+                userNameController: _userNameController,
+                pswdFocusNode: _pswdFocusNode,
                 pswdController: _pswdController,
-                emailBool: emailBool,
-                pswdBool: pswdBool,
-                pswdVisible: pswdVisible,
+                userNameBool: _userNameBool,
+                pswdBool: _pswdBool,
+                pswdVisible: _pswdVisible,
                 onUpdatePswdVisible: updatePswdVisible,
-                passwordStrengthIndicator: passwordStrengthIndicator,
-                loginOnPressed: onloginOnPressed,
-                loginWithFacebookOnPressed: onLoginWithFacebookOnPressed,
-                dontHaveAnAccountOnPressed: onDontHaveAnAccountOnPressed,
+                passwordStrengthIndicator: _passwordStrengthIndicator,
+                createAccountOnPressed: createAccountOnPressed,
               )
             : scnH < scnW
                 ? LandscapeCreateMainAdminScreen(
-                    emailFocusNode: emailFocusNode,
-                    emailController: _emailController,
-                    pswdFocusNode: pswdFocusNode,
+                    userNameFocusNode: _userNameFocusNode,
+                    userNameController: _userNameController,
+                    pswdFocusNode: _pswdFocusNode,
                     pswdController: _pswdController,
-                    emailBool: emailBool,
-                    pswdBool: pswdBool,
-                    pswdVisible: pswdVisible,
+                    userNameBool: _userNameBool,
+                    pswdBool: _pswdBool,
+                    pswdVisible: _pswdVisible,
                     onUpdatePswdVisible: updatePswdVisible,
-                    passwordStrengthIndicator: passwordStrengthIndicator,
-                    loginOnPressed: onloginOnPressed,
-                    loginWithFacebookOnPressed: onLoginWithFacebookOnPressed,
-                    dontHaveAnAccountOnPressed: onDontHaveAnAccountOnPressed,
+                    passwordStrengthIndicator: _passwordStrengthIndicator,
+                    createAccountOnPressed: createAccountOnPressed,
                   )
                 : SquareCreateMainAdminScreen(
-                    emailFocusNode: emailFocusNode,
-                    emailController: _emailController,
-                    pswdFocusNode: pswdFocusNode,
+                    userNameFocusNode: _userNameFocusNode,
+                    userNameController: _userNameController,
+                    pswdFocusNode: _pswdFocusNode,
                     pswdController: _pswdController,
-                    emailBool: emailBool,
-                    pswdBool: pswdBool,
-                    pswdVisible: pswdVisible,
+                    userNameBool: _userNameBool,
+                    pswdBool: _pswdBool,
+                    pswdVisible: _pswdVisible,
                     onUpdatePswdVisible: updatePswdVisible,
-                    passwordStrengthIndicator: passwordStrengthIndicator,
-                    loginOnPressed: onloginOnPressed,
-                    loginWithFacebookOnPressed: onLoginWithFacebookOnPressed,
-                    dontHaveAnAccountOnPressed: onDontHaveAnAccountOnPressed,
+                    passwordStrengthIndicator: _passwordStrengthIndicator,
+                    createAccountOnPressed: createAccountOnPressed,
                   ),
       ),
     );
   }
 }
 
-//  This code defines a Flutter widget named `LogInScreen` that represents the
-//  login screen of a mobile application. It includes implementations for
-//  portrait, landscape, and square layouts, each with distinct UI arrangements.
-//  The widget uses various controllers and focus nodes for handling email and
-//  password input, and it integrates a custom module for password strength
-//  evaluation (`DecidePasswordStrength`). Additionally, the code includes
-//  methods for handling different login-related actions, such as pressing the
-//  login button, login with Facebook, and navigating to a registration screen.
-//  The widget adjusts its appearance based on the device's screen orientation.
+// This Flutter Dart code defines a CreateMainAdminScreen widget,
+// which is a stateful widget that displays a user interface for creating
+// a main admin account. The screen contains input fields for username and
+// password, with dynamic visibility toggling for the password field.
+// It also includes a method for detecting password strength. The layout
+// adapts based on the device orientation, rendering different versions of
+// the screen for portrait, landscape, and square orientations. The widget
+// utilizes other custom widget files (PortraitCreateMainAdminScreen,
+// LandscapeCreateMainAdminScreen, SquareCreateMainAdminScreen) for the
+// respective orientations, passing necessary parameters to each.

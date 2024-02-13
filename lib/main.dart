@@ -6,7 +6,11 @@ import "src/module/my_app.dart";
 bool mainAdminBool = false;
 void main() {
   // Default Value For Main Admin Map
-  Map<String, String> data = {"Name": "", "Password": ""};
+  Map<String, dynamic> data = {
+    "Name": " ",
+    "Password": " ",
+    "MainAdmin": false
+  };
 
   // initialize Admin DataBase Variable
   File mainAdminsFile = File("database/admins/main_admin.json");

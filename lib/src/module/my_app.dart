@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     File adminsFile = File("database/admins/user_admin.json");
 
     // Read Main Admin DataBase
-    Map<String, String> mainAdmin =
+    Map <String, dynamic> mainAdmin =
         jsonDecode(mainAdminsFile.readAsStringSync());
 
     // Decide Whether Or Not To Create A New Admin Or Main Admin
