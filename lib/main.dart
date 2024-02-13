@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "dart:io";
 import "dart:convert";
-import "package:accounts_and_data_base/screens/create_main_admin_screen.dart";
-import "package:accounts_and_data_base/screens/create_admin_screen.dart";
-import "package:accounts_and_data_base/screens/login_screen.dart";
+import "/src/screens/create_main_admin_screen.dart";
+import "/src/screens/create_admin_screen.dart";
+import "/src/screens/login_screen.dart";
 
 bool mainAdminBool = false;
 void main() {

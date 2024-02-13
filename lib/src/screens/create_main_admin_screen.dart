@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:accounts_and_data_base/screens/portrait/create_main_admin_screen.dart';
-import 'package:accounts_and_data_base/screens/landscape/create_main_admin_screen.dart';
-import 'package:accounts_and_data_base/screens/square/create_main_admin_screen.dart';
+import '/src/screens/portrait/create_main_admin_screen.dart';
+import '/src/screens/landscape/create_main_admin_screen.dart';
+import '/src/screens/square/create_main_admin_screen.dart';
 
 class CreateMainAdminScreen extends StatefulWidget {
   const CreateMainAdminScreen({super.key});

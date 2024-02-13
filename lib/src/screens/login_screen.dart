@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:accounts_and_data_base/screens/portrait/login_screen.dart";
-import "package:accounts_and_data_base/screens/landscape/login_screen.dart";
-import "package:accounts_and_data_base/screens/square/login_screen.dart";
+import "/src/screens/portrait/login_screen.dart";
+import "/src/screens/landscape/login_screen.dart";
+import "/src/screens/square/login_screen.dart";
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:accounts_and_data_base/screens/portrait/create_admin_screen.dart";
-import "package:accounts_and_data_base/screens/landscape/create_admin_screen.dart";
-import "package:accounts_and_data_base/screens/square/create_admin_screen.dart";
+import "/src/screens/portrait/create_admin_screen.dart";
+import "/src/screens/landscape/create_admin_screen.dart";
+import "/src/screens/square/create_admin_screen.dart";
 
 class CreateAdminScreen extends StatefulWidget {
   const CreateAdminScreen({super.key});
