@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "dart:io";
 import "dart:convert";
 import "/src/screens/create_main_admin_screen.dart";
-import "/src/screens/create_admin_screen.dart";
+import 'src/screens/first_create_admin_screen.dart';
 import "/src/screens/login_screen.dart";
 
 bool mainAdminBool = false;
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
     } else if (adminsFile.readAsStringSync() == "") {
       return const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: CreateAdminScreen(),
+        home: FirstCreateAdminScreen(),
       );
     } else {
       return const MaterialApp(
