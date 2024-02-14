@@ -130,6 +130,106 @@ class _CreateMainAdminScreenState extends State<CreateMainAdminScreen> {
   }
 }
 
+class CreateMainAdminConfirmPasswordScreen extends StatefulWidget {
+  const CreateMainAdminConfirmPasswordScreen({super.key});
+
+  @override
+  State<CreateMainAdminConfirmPasswordScreen> createState() => _CreateMainAdminConfirmPasswordScreenState();
+}
+
+class _CreateMainAdminConfirmPasswordScreenState extends State<CreateMainAdminConfirmPasswordScreen> {
+  late final FocusNode _pswdFocusNode;
+  late final TextEditingController _pswdController;
+  late bool _pswdBool;
+  late bool _pswdVisible;
+  late DecidePasswordStrength _passwordStrengthIndicator;
+
+  myFunction() {
+    _pswdFocusNode.addListener(() {
+      setState(() {
+        if (_pswdFocusNode.hasFocus) {
+          _pswdBool = true;
+        } else if (!_pswdFocusNode.hasFocus) {
+          _pswdBool = false;
+        }
+      });
+    });
+    _pswdController.addListener(() {
+      setState(() {
+        _passwordStrengthIndicator.detectPasswordStrength(_pswdController.text);
+      });
+    });
+  }
+
+  // Method to update pswdVisible from child
+  void updatePswdVisible(bool newValue) {
+    setState(() {
+      _pswdVisible = newValue;
+    });
+  }
+
+  void passwordConfirmOnPressed() {}
+
+  @override
+  void initState() {
+    super.initState();
+    _pswdFocusNode = FocusNode();
+    _pswdController = TextEditingController();
+    _pswdBool = false;
+    _pswdVisible = true;
+    _passwordStrengthIndicator = DecidePasswordStrength();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pswdFocusNode.dispose();
+    _pswdController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    myFunction(); // Call myFunction() here to ensure it is executed on each rebuild
+    double scnW = MediaQuery.of(context).size.width;
+    double scnH = MediaQuery.of(context).size.height;
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Very First Confirm Password Screen",
+      home: Scaffold(
+        body: scnH > scnW
+            ? PortraitCreateMainAdminConfirmPasswordScreen(
+                pswdFocusNode: _pswdFocusNode,
+                pswdController: _pswdController,
+                pswdBool: _pswdBool,
+                pswdVisible: _pswdVisible,
+                onUpdatePswdVisible: updatePswdVisible,
+                passwordStrengthIndicator: _passwordStrengthIndicator,
+                passwordConfirmOnPressed: passwordConfirmOnPressed,
+              )
+            : scnH < scnW
+                ? LandscapeCreateMainAdminConfirmPasswordScreen(
+                    pswdFocusNode: _pswdFocusNode,
+                    pswdController: _pswdController,
+                    pswdBool: _pswdBool,
+                    pswdVisible: _pswdVisible,
+                    onUpdatePswdVisible: updatePswdVisible,
+                    passwordStrengthIndicator: _passwordStrengthIndicator,
+                    passwordConfirmOnPressed: passwordConfirmOnPressed,
+                  )
+                : SquareCreateMainAdminConfirmPasswordScreen(
+                    pswdFocusNode: _pswdFocusNode,
+                    pswdController: _pswdController,
+                    pswdBool: _pswdBool,
+                    pswdVisible: _pswdVisible,
+                    onUpdatePswdVisible: updatePswdVisible,
+                    passwordStrengthIndicator: _passwordStrengthIndicator,
+                    passwordConfirmOnPressed: passwordConfirmOnPressed,
+                  ),
+      ),
+    );
+  }
+}
+
 // This Flutter Dart code defines a CreateMainAdminScreen widget,
 // which is a stateful widget that displays a user interface for creating
 // a main admin account. The screen contains input fields for username and
