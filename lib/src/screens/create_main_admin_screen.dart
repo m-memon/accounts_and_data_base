@@ -20,6 +20,7 @@ class _CreateMainAdminScreenState extends State<CreateMainAdminScreen> {
   late bool _pswdBool;
   late bool _pswdVisible;
   late DecidePasswordStrength _passwordStrengthIndicator;
+  late BuildContext contextOfWidget;
 
   myFunction() {
     _userNameFocusNode.addListener(() {
@@ -54,7 +55,14 @@ class _CreateMainAdminScreenState extends State<CreateMainAdminScreen> {
     });
   }
 
-  void createAccountOnPressed() {}
+  void createAccountOnPressed(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const CreateMainAdminConfirmPasswordScreen(
+                // map: Map(),
+                )));
+  }
 
   @override
   void initState() {
@@ -131,13 +139,19 @@ class _CreateMainAdminScreenState extends State<CreateMainAdminScreen> {
 }
 
 class CreateMainAdminConfirmPasswordScreen extends StatefulWidget {
+  // final Map<String, dynamic> map;
+  // const CreateMainAdminConfirmPasswordScreen({
+  //   Key? key, required this.map,
+  // }) : super(key: key);
   const CreateMainAdminConfirmPasswordScreen({super.key});
 
   @override
-  State<CreateMainAdminConfirmPasswordScreen> createState() => _CreateMainAdminConfirmPasswordScreenState();
+  State<CreateMainAdminConfirmPasswordScreen> createState() =>
+      _CreateMainAdminConfirmPasswordScreenState();
 }
 
-class _CreateMainAdminConfirmPasswordScreenState extends State<CreateMainAdminConfirmPasswordScreen> {
+class _CreateMainAdminConfirmPasswordScreenState
+    extends State<CreateMainAdminConfirmPasswordScreen> {
   late final FocusNode _pswdFocusNode;
   late final TextEditingController _pswdController;
   late bool _pswdBool;
@@ -168,7 +182,9 @@ class _CreateMainAdminConfirmPasswordScreenState extends State<CreateMainAdminCo
     });
   }
 
-  void passwordConfirmOnPressed() {}
+  void passwordConfirmOnPressed(BuildContext context) {}
+
+  void returnBackScreenOnPressed(BuildContext context) {}
 
   @override
   void initState() {
@@ -205,6 +221,7 @@ class _CreateMainAdminConfirmPasswordScreenState extends State<CreateMainAdminCo
                 onUpdatePswdVisible: updatePswdVisible,
                 passwordStrengthIndicator: _passwordStrengthIndicator,
                 passwordConfirmOnPressed: passwordConfirmOnPressed,
+                returnBackScreenOnPressed: returnBackScreenOnPressed,
               )
             : scnH < scnW
                 ? LandscapeCreateMainAdminConfirmPasswordScreen(
@@ -215,6 +232,7 @@ class _CreateMainAdminConfirmPasswordScreenState extends State<CreateMainAdminCo
                     onUpdatePswdVisible: updatePswdVisible,
                     passwordStrengthIndicator: _passwordStrengthIndicator,
                     passwordConfirmOnPressed: passwordConfirmOnPressed,
+                    returnBackScreenOnPressed: returnBackScreenOnPressed,
                   )
                 : SquareCreateMainAdminConfirmPasswordScreen(
                     pswdFocusNode: _pswdFocusNode,
@@ -224,6 +242,7 @@ class _CreateMainAdminConfirmPasswordScreenState extends State<CreateMainAdminCo
                     onUpdatePswdVisible: updatePswdVisible,
                     passwordStrengthIndicator: _passwordStrengthIndicator,
                     passwordConfirmOnPressed: passwordConfirmOnPressed,
+                    returnBackScreenOnPressed: returnBackScreenOnPressed,
                   ),
       ),
     );

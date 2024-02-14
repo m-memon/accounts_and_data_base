@@ -11,7 +11,7 @@ class LandscapeCreateMainAdminScreen extends StatefulWidget {
   final bool pswdVisible;
   final Function(bool) onUpdatePswdVisible;
   final DecidePasswordStrength passwordStrengthIndicator;
-  final Function() createAccountOnPressed;
+  final Function(BuildContext context) createAccountOnPressed;
   const LandscapeCreateMainAdminScreen({
     Key? key,
     required this.userNameFocusNode,
@@ -311,7 +311,7 @@ class _LandscapeCreateMainAdminScreenState
               ),
               color: Colors.blue,
               elevation: 10,
-              onPressed: () => widget.createAccountOnPressed(),
+              onPressed: () => widget.createAccountOnPressed(context),
               child: Stack(
                 alignment: Alignment.centerLeft,
                 children: <Widget>[
@@ -367,7 +367,8 @@ class LandscapeCreateMainAdminConfirmPasswordScreen extends StatefulWidget {
   final bool pswdVisible;
   final Function(bool) onUpdatePswdVisible;
   final DecidePasswordStrength passwordStrengthIndicator;
-  final Function() passwordConfirmOnPressed;
+  final Function(BuildContext context) passwordConfirmOnPressed;
+  final Function(BuildContext context) returnBackScreenOnPressed;
   const LandscapeCreateMainAdminConfirmPasswordScreen({
     Key? key,
     required this.pswdFocusNode,
@@ -377,6 +378,7 @@ class LandscapeCreateMainAdminConfirmPasswordScreen extends StatefulWidget {
     required this.onUpdatePswdVisible,
     required this.passwordStrengthIndicator,
     required this.passwordConfirmOnPressed,
+    required this.returnBackScreenOnPressed,
   }) : super(key: key);
   @override
   State<LandscapeCreateMainAdminConfirmPasswordScreen> createState() =>
@@ -411,7 +413,7 @@ class _LandscapeCreateMainAdminConfirmPasswordScreenState
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget> [
+              children: <Widget>[
                 Container(
                   width: scnW * 100,
                   height: scnH * 50,
@@ -424,7 +426,7 @@ class _LandscapeCreateMainAdminConfirmPasswordScreenState
                       bottomRight: Radius.circular(scnH * 30),
                     ),
                   ),
-                  child:  const Text(
+                  child: const Text(
                     "Back",
                     style: TextStyle(
                       color: Colors.white,
@@ -614,7 +616,7 @@ class _LandscapeCreateMainAdminConfirmPasswordScreenState
                   ),
                   color: Colors.blue,
                   elevation: 10,
-                  onPressed: () => widget.passwordConfirmOnPressed(),
+                  onPressed: () => widget.passwordConfirmOnPressed(context),
                   child: Stack(
                     alignment: Alignment.centerLeft,
                     children: <Widget>[

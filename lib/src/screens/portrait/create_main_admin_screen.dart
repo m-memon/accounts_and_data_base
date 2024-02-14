@@ -11,8 +11,8 @@ class PortraitCreateMainAdminScreen extends StatefulWidget {
   final bool pswdVisible;
   final Function(bool) onUpdatePswdVisible;
   final DecidePasswordStrength passwordStrengthIndicator;
-  final Function() createAccountOnPressed;
-  const PortraitCreateMainAdminScreen({
+  final Function(BuildContext context) createAccountOnPressed;
+  PortraitCreateMainAdminScreen({
     Key? key,
     required this.userNameFocusNode,
     required this.userNameController,
@@ -313,7 +313,7 @@ class _PortraitCreateMainAdminScreenState
               ),
               color: Colors.blue,
               elevation: 10,
-              onPressed: () => widget.createAccountOnPressed(),
+              onPressed: () => widget.createAccountOnPressed(context),
               child: Stack(
                 alignment: Alignment.centerLeft,
                 children: <Widget>[
@@ -371,7 +371,8 @@ class PortraitCreateMainAdminConfirmPasswordScreen extends StatefulWidget {
   final bool pswdVisible;
   final Function(bool) onUpdatePswdVisible;
   final DecidePasswordStrength passwordStrengthIndicator;
-  final Function() passwordConfirmOnPressed;
+  final Function(BuildContext context) passwordConfirmOnPressed;
+  final Function(BuildContext context) returnBackScreenOnPressed;
   const PortraitCreateMainAdminConfirmPasswordScreen({
     Key? key,
     required this.pswdFocusNode,
@@ -381,6 +382,7 @@ class PortraitCreateMainAdminConfirmPasswordScreen extends StatefulWidget {
     required this.onUpdatePswdVisible,
     required this.passwordStrengthIndicator,
     required this.passwordConfirmOnPressed,
+    required this.returnBackScreenOnPressed,
   }) : super(key: key);
   @override
   State<PortraitCreateMainAdminConfirmPasswordScreen> createState() =>
@@ -415,7 +417,7 @@ class _PortraitCreateMainAdminConfirmPasswordScreenState
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget> [
+              children: <Widget>[
                 Container(
                   width: scnW * 100,
                   height: scnH * 50,
@@ -428,7 +430,7 @@ class _PortraitCreateMainAdminConfirmPasswordScreenState
                       bottomRight: Radius.circular(scnH * 30),
                     ),
                   ),
-                  child:  const Text(
+                  child: const Text(
                     "Back",
                     style: TextStyle(
                       color: Colors.white,
@@ -618,7 +620,7 @@ class _PortraitCreateMainAdminConfirmPasswordScreenState
                   ),
                   color: Colors.blue,
                   elevation: 10,
-                  onPressed: () => widget.passwordConfirmOnPressed(),
+                  onPressed: () => widget.passwordConfirmOnPressed(context),
                   child: Stack(
                     alignment: Alignment.centerLeft,
                     children: <Widget>[
