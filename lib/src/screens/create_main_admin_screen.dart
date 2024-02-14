@@ -12,6 +12,7 @@ class CreateMainAdminScreen extends StatefulWidget {
 }
 
 class _CreateMainAdminScreenState extends State<CreateMainAdminScreen> {
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
   late final FocusNode _userNameFocusNode;
   late final TextEditingController _userNameController;
   late final FocusNode _pswdFocusNode;
@@ -56,12 +57,10 @@ class _CreateMainAdminScreenState extends State<CreateMainAdminScreen> {
   }
 
   void createAccountOnPressed(BuildContext context) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => const CreateMainAdminConfirmPasswordScreen(
-                // map: Map(),
-                )));
+    _navigatorKey.currentState?.push(MaterialPageRoute(
+      builder: (context) =>
+          CreateMainAdminConfirmPasswordScreen(navigatorKey: _navigatorKey),
+    ));
   }
 
   @override
@@ -92,6 +91,7 @@ class _CreateMainAdminScreenState extends State<CreateMainAdminScreen> {
     double scnW = MediaQuery.of(context).size.width;
     double scnH = MediaQuery.of(context).size.height;
     return MaterialApp(
+      navigatorKey: _navigatorKey,
       debugShowCheckedModeBanner: false,
       title: "Very First Screen",
       home: Scaffold(
@@ -139,11 +139,11 @@ class _CreateMainAdminScreenState extends State<CreateMainAdminScreen> {
 }
 
 class CreateMainAdminConfirmPasswordScreen extends StatefulWidget {
+  final GlobalKey<NavigatorState> navigatorKey;
   // final Map<String, dynamic> map;
-  // const CreateMainAdminConfirmPasswordScreen({
-  //   Key? key, required this.map,
-  // }) : super(key: key);
-  const CreateMainAdminConfirmPasswordScreen({super.key});
+  const CreateMainAdminConfirmPasswordScreen(
+      {Key? key, required this.navigatorKey})
+      : super(key: key);
 
   @override
   State<CreateMainAdminConfirmPasswordScreen> createState() =>
@@ -184,7 +184,9 @@ class _CreateMainAdminConfirmPasswordScreenState
 
   void passwordConfirmOnPressed(BuildContext context) {}
 
-  void returnBackScreenOnPressed(BuildContext context) {}
+  void returnBackScreenOnPressed(BuildContext context) {
+    widget.navigatorKey.currentState?.pop();
+  }
 
   @override
   void initState() {
@@ -210,41 +212,40 @@ class _CreateMainAdminConfirmPasswordScreenState
     double scnH = MediaQuery.of(context).size.height;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Very First Confirm Password Screen",
+      title: "Main Admin Account Create Second Screen",
       home: Scaffold(
-        body: scnH > scnW
-            ? PortraitCreateMainAdminConfirmPasswordScreen(
-                pswdFocusNode: _pswdFocusNode,
-                pswdController: _pswdController,
-                pswdBool: _pswdBool,
-                pswdVisible: _pswdVisible,
-                onUpdatePswdVisible: updatePswdVisible,
-                passwordStrengthIndicator: _passwordStrengthIndicator,
-                passwordConfirmOnPressed: passwordConfirmOnPressed,
-                returnBackScreenOnPressed: returnBackScreenOnPressed,
-              )
-            : scnH < scnW
-                ? LandscapeCreateMainAdminConfirmPasswordScreen(
-                    pswdFocusNode: _pswdFocusNode,
-                    pswdController: _pswdController,
-                    pswdBool: _pswdBool,
-                    pswdVisible: _pswdVisible,
-                    onUpdatePswdVisible: updatePswdVisible,
-                    passwordStrengthIndicator: _passwordStrengthIndicator,
-                    passwordConfirmOnPressed: passwordConfirmOnPressed,
-                    returnBackScreenOnPressed: returnBackScreenOnPressed,
-                  )
-                : SquareCreateMainAdminConfirmPasswordScreen(
-                    pswdFocusNode: _pswdFocusNode,
-                    pswdController: _pswdController,
-                    pswdBool: _pswdBool,
-                    pswdVisible: _pswdVisible,
-                    onUpdatePswdVisible: updatePswdVisible,
-                    passwordStrengthIndicator: _passwordStrengthIndicator,
-                    passwordConfirmOnPressed: passwordConfirmOnPressed,
-                    returnBackScreenOnPressed: returnBackScreenOnPressed,
-                  ),
-      ),
+          body: scnH > scnW
+              ? PortraitCreateMainAdminConfirmPasswordScreen(
+                  pswdFocusNode: _pswdFocusNode,
+                  pswdController: _pswdController,
+                  pswdBool: _pswdBool,
+                  pswdVisible: _pswdVisible,
+                  onUpdatePswdVisible: updatePswdVisible,
+                  passwordStrengthIndicator: _passwordStrengthIndicator,
+                  passwordConfirmOnPressed: passwordConfirmOnPressed,
+                  returnBackScreenOnPressed: returnBackScreenOnPressed,
+                )
+              : scnH < scnW
+                  ? LandscapeCreateMainAdminConfirmPasswordScreen(
+                      pswdFocusNode: _pswdFocusNode,
+                      pswdController: _pswdController,
+                      pswdBool: _pswdBool,
+                      pswdVisible: _pswdVisible,
+                      onUpdatePswdVisible: updatePswdVisible,
+                      passwordStrengthIndicator: _passwordStrengthIndicator,
+                      passwordConfirmOnPressed: passwordConfirmOnPressed,
+                      returnBackScreenOnPressed: returnBackScreenOnPressed,
+                    )
+                  : SquareCreateMainAdminConfirmPasswordScreen(
+                      pswdFocusNode: _pswdFocusNode,
+                      pswdController: _pswdController,
+                      pswdBool: _pswdBool,
+                      pswdVisible: _pswdVisible,
+                      onUpdatePswdVisible: updatePswdVisible,
+                      passwordStrengthIndicator: _passwordStrengthIndicator,
+                      passwordConfirmOnPressed: passwordConfirmOnPressed,
+                      returnBackScreenOnPressed: returnBackScreenOnPressed,
+                    )),
     );
   }
 }
